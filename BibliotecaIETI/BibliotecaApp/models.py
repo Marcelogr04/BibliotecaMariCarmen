@@ -7,19 +7,16 @@ class User(AbstractUser):
     cycle = models.CharField(max_length=100)
     image = models.ImageField(upload_to='profile_photos', default='default.jpg')
 
-     # Definir accesos inversos personalizados para evitar conflictos
+    # Definir accesos inversos personalizados para evitar conflictos
     groups = models.ManyToManyField('auth.Group', related_name="biblioteca_user_groups", blank=True)
     user_permissions = models.ManyToManyField('auth.Permission', related_name="biblioteca_user_permissions", blank=True)
-
-class Catalog(models.Model):
-    name = models.CharField(max_length=100)
-    description = models.TextField()
 
 class ItemType(models.Model):
     name = models.CharField(max_length=100)
 
 class CatalogItem(models.Model):
-    catalog = models.ForeignKey(Catalog, on_delete=models.CASCADE)
+    # Eliminar la relación con Catalog
+    # catalog = models.ForeignKey(Catalog, on_delete=models.CASCADE)
     item_type = models.ForeignKey(ItemType, on_delete=models.CASCADE)
     name = models.CharField(max_length=100)
     image = models.ImageField(upload_to='catalog_images', default='default_item.jpg')

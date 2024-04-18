@@ -1,8 +1,7 @@
 from django.contrib import admin
-from .models import User, Catalog, ItemType, CatalogItem, Copy, Reservation, Loan, Request, Log
+from .models import User, ItemType, CatalogItem, Copy, Reservation, Loan, Request, Log
 
 admin.site.register(User)
-admin.site.register(Catalog)
 admin.site.register(ItemType)
 admin.site.register(CatalogItem)
 admin.site.register(Copy)

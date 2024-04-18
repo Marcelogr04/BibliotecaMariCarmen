@@ -1,4 +1,4 @@
-# BibliotecaMariCarmen
+# Biblioteca Mari Carmen
 Benvinguts a la Biblioteca Mari Carmen, el vostre destí en línia per a explorar el meravellós món del coneixement i la imaginació. Amb un disseny net i elegant, la nostra pàgina web us convida a endinsar-vos en un univers ric en recursos literaris i acadèmics.
 
 Amb la seva interfície intuitiva i de fàcil navegació, la Biblioteca Mari Carmen ofereix una experiència única per a tots els amants de la lectura. Ja sigui que estigueu buscant els clàssics de sempre o les últimes novetats editorials, aquí trobareu tot el que necessiteu per a saciar la vostra curiositat i alimentar la vostra ment.

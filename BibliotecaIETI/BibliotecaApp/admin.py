@@ -1,11 +1,11 @@
 from django.contrib import admin
-from .models import User, ItemType, CatalogItem, Copy, Reservation, Loan, Request, Log
+from .models import User, TipusElement, ElementCatalog, Exemplar, Reserva, Prestec, Peticio, Registre
 
 admin.site.register(User)
-admin.site.register(ItemType)
-admin.site.register(CatalogItem)
-admin.site.register(Copy)
-admin.site.register(Reservation)
-admin.site.register(Loan)
-admin.site.register(Request)
-admin.site.register(Log)
+admin.site.register(TipusElement)
+admin.site.register(ElementCatalog)
+admin.site.register(Exemplar)
+admin.site.register(Reserva)
+admin.site.register(Prestec)
+admin.site.register(Peticio)
+admin.site.register(Registre)

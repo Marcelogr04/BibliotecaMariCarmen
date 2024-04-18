@@ -10,36 +10,34 @@ class User(AbstractUser):
     # Definir accesos inversos personalizados para evitar conflictos
     groups = models.ManyToManyField('auth.Group', related_name="biblioteca_user_groups", blank=True)
     user_permissions = models.ManyToManyField('auth.Permission', related_name="biblioteca_user_permissions", blank=True)
+    
+class TipusElement(models.Model):
+    nom = models.CharField(max_length=100)
 
-class ItemType(models.Model):
-    name = models.CharField(max_length=100)
+class ElementCatalog(models.Model):
+    tipus_element = models.ForeignKey(TipusElement, on_delete=models.CASCADE)
+    nom = models.CharField(max_length=100)
+    imatge = models.ImageField(upload_to='catalog_images', default='default_item.jpg')
 
-class CatalogItem(models.Model):
-    # Eliminar la relación con Catalog
-    # catalog = models.ForeignKey(Catalog, on_delete=models.CASCADE)
-    item_type = models.ForeignKey(ItemType, on_delete=models.CASCADE)
-    name = models.CharField(max_length=100)
-    image = models.ImageField(upload_to='catalog_images', default='default_item.jpg')
+class Exemplar(models.Model):
+    element_catalog = models.ForeignKey(ElementCatalog, on_delete=models.CASCADE)
 
-class Copy(models.Model):
-    catalog_item = models.ForeignKey(CatalogItem, on_delete=models.CASCADE)
+class Reserva(models.Model):
+    usuari = models.ForeignKey(User, on_delete=models.CASCADE)
+    exemplar = models.ForeignKey(Exemplar, on_delete=models.CASCADE)
+    data_reserva = models.DateField()
 
-class Reservation(models.Model):
-    user = models.ForeignKey(User, on_delete=models.CASCADE)
-    copy = models.ForeignKey(Copy, on_delete=models.CASCADE)
-    reserved_date = models.DateField()
+class Prestec(models.Model):
+    usuari = models.ForeignKey(User, on_delete=models.CASCADE)
+    exemplar = models.ForeignKey(Exemplar, on_delete=models.CASCADE)
+    data_prestec = models.DateField()
+    data_retorn = models.DateField(null=True, blank=True)
 
-class Loan(models.Model):
-    user = models.ForeignKey(User, on_delete=models.CASCADE)
-    copy = models.ForeignKey(Copy, on_delete=models.CASCADE)
-    loan_date = models.DateField()
-    return_date = models.DateField(null=True, blank=True)
+class Peticio(models.Model):
+    usuari = models.ForeignKey(User, on_delete=models.CASCADE)
+    data_peticio = models.DateField()
+    complerta = models.BooleanField(default=False)
 
-class Request(models.Model):
-    user = models.ForeignKey(User, on_delete=models.CASCADE)
-    request_date = models.DateField()
-    fulfilled = models.BooleanField(default=False)
-
-class Log(models.Model):
-    message = models.TextField()
-    log_date = models.DateTimeField(auto_now_add=True)
+class Registre(models.Model):
+    missatge = models.TextField()
+    data_registre = models.DateTimeField(auto_now_add=True)

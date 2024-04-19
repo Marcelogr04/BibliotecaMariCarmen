@@ -2,7 +2,7 @@ from django.contrib.auth.models import AbstractUser
 from django.db import models
 
 
-# Modelo base para los elementos del catálogo
+# Modelo base para los elementos del item_catálogo
 class ItemCatalogo(models.Model):
     id_catalogo = models.CharField(max_length=200)
     titulo = models.CharField(max_length=200)
@@ -78,8 +78,6 @@ class Peticion(models.Model):
     usuario = models.ForeignKey(User, on_delete=models.CASCADE)
     elemento = models.ForeignKey(ItemCatalogo, on_delete=models.CASCADE)
     fecha_peticion = models.DateTimeField(auto_now_add=True)
-
-from django.db import models
 
 class Log(models.Model):
     evento = models.CharField(max_length=200)

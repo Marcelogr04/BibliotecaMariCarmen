@@ -4,7 +4,7 @@ from django.db import models
 
 # Modelo base para los elementos del item_catálogo
 class ItemCatalogo(models.Model):
-    id_catalogo = models.CharField(max_length=200)
+    id_catalogo = models.CharField(max_length=200, unique=True)
     titulo = models.CharField(max_length=200)
     ocio = models.TextField()
     autor = models.CharField(max_length=200)
